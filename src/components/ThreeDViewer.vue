@@ -71,15 +71,11 @@ onMounted(() => {
   // 添加Luma AI的3D Gaussian Splatting
   const splat = new LumaSplatsThree({
     source: props.source,
-    onProgress: () => {
-      // 加载进度更新
-    },
-    onLoad: () => {
-      // 加载完成
-      loading.value = false
-    },
   })
   scene.add(splat)
+  
+  // 设置加载完成状态
+  loading.value = false
 
   // 添加光源
   const light = new AmbientLight(0xffffff)
