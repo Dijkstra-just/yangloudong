@@ -53,7 +53,7 @@ const attractions = ref<Attraction[]>([
     history: '始建于明清时期，长约2200米，是当时茶叶贸易的主要通道。青石板路面被历代运茶的"鸡公车"碾成寸余深槽，见证了古镇的繁华历史。',
     features: ['青石板路', '明清建筑', '茶马古道遗迹', '历史文化街区'],
     images: ['/sbj1.jpg', '/sbj2.jpeg','/sbj3.png'],
-    modelUrl: 'https://lumalabs.ai/capture/your-model-3',
+    modelUrl: 'https://lumalabs.ai/capture/20cc6bdd-638a-4c29-93d7-f9fae106384e',
     x: 60,
     y: 56
   },
@@ -64,7 +64,7 @@ const attractions = ref<Attraction[]>([
     history: '青砖茶有200多年的生产历史，羊楼洞是青砖茶的发源地。博物馆详细展示了从茶叶种植到成品销售的全过程。',
     features: ['青砖茶历史', '制茶工艺', '茶文化展示', '互动体验'],
     images: ['/bwg1.jpg', '/bwg2.jpg'],
-    modelUrl: 'https://lumalabs.ai/capture/your-model-4',
+    modelUrl: 'https://lumalabs.ai/capture/b2e36f28-529a-483f-8e20-62b253265627',
     x: 80,
     y: 50
   },
@@ -86,7 +86,7 @@ const attractions = ref<Attraction[]>([
     history: '雷家是羊楼洞的名门望族，曾经营茶庄生意。大院建筑精美，布局合理，是研究明清民居的重要实物。',
     features: ['古民居建筑', '商贾文化', '传统工艺', '家族历史'],
     images: ['/ljdy1.jpg', '/ljdy2.jpg'],
-    modelUrl: 'https://lumalabs.ai/capture/your-model-6',
+    modelUrl: 'https://lumalabs.ai/capture/55d64516-88e6-4633-9c6c-f04ef01426b6',
     x: 78,
     y: 85
   },
@@ -418,7 +418,6 @@ onMounted(() => {
 }
 
 .container {
-  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -427,7 +426,6 @@ onMounted(() => {
 .site-header {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
   color: white;
-  /* padding: 25px 0; */
   text-align: center;
   position: relative;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -1154,23 +1152,45 @@ onMounted(() => {
   background: #2c3e50;
   color: white;
   text-align: center;
-  padding: 30px 0;
-  margin-top: 60px;
+  padding: 40px 0;
+  /* margin-top: 80px; */
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
 }
 
-/* 响应式设计 */
+/* 响应式设计 - 平板端 */
+@media (max-width: 1024px) {
+  .intro-grid {
+    gap: 40px;
+  }
+  
+  .highlights-section {
+    padding: 40px 30px;
+  }
+  
+  .full-content {
+    padding: 40px 0;
+  }
+}
+
+/* 移动端适配 - 大屏手机 */
 @media (max-width: 768px) {
+  .site-header {
+    padding: 20px 0;
+  }
+
   .site-title {
     font-size: 2.2rem;
   }
 
   .site-subtitle {
     font-size: 0.9rem;
+    margin-top: 8px;
   }
 
   .title-row {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 0;
   }
 
   .back-btn {
@@ -1178,70 +1198,535 @@ onMounted(() => {
     transform: none;
     margin: 15px auto 0;
     display: block;
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
 
-  .carousel-container {
-    height: 300px;
-  }
-
-  .carousel-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.6rem;
-  }
-
-  .prev-btn {
-    left: 15px;
+  /* 初始视图优化 */
+  .initial-overview-image {
+    max-width: 90vw;
+    height: auto;
   }
 
   .next-btn {
-    right: 15px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    margin-top: 30px;
   }
 
-  .modal-content {
-    max-width: 95vw;
-    margin: 10px;
+  /* 完整视图布局调整 */
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
   }
 
-  .modal-header {
-    padding: 20px 25px;
+  .intro-grid .intro-image {
+    order: -1;
   }
 
-  .modal-header h3 {
-    font-size: 1.4rem;
+  .intro-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
 
-  .attraction-info {
-    padding: 25px 20px;
+  .intro-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
   }
 
   .features-list {
     grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .feature-item {
+    padding: 12px 15px;
+    text-align: left;
+  }
+
+  .feature-icon {
+    font-size: 1.3rem;
+    margin-right: 8px;
+  }
+
+  /* 地图区域优化 */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+
+  .interactive-map {
+    margin: 0 -10px;
+    border-radius: 8px;
+  }
+
+  .marker-dot {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+  }
+
+  .marker-label {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    top: -35px;
+  }
+
+  /* 特色展示区域 */
+  .highlights-section {
+    padding: 40px 20px;
+    margin: 0 10px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 25px;
+  }
+
+  .highlight-card {
+    padding: 25px 20px;
+  }
+
+  .highlight-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .highlight-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .highlight-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* 弹窗优化 */
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    max-width: 100vw;
+    margin: 20px 0;
+    max-height: calc(100vh - 40px);
+  }
+
+  .modal-header {
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.4rem;
+    flex: 1;
+    min-width: 200px;
   }
 
   .header-controls {
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
   }
 
   .model-toggle-btn {
-    padding: 8px 16px;
+    padding: 8px 15px;
     font-size: 0.85rem;
+    border-radius: 20px;
+  }
+
+  .close-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  /* 轮播图优化 */
+  .carousel-container {
+    height: 250px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    bottom: 15px;
+    padding: 8px 15px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* 景点信息优化 */
+  .attraction-info {
+    padding: 20px 15px;
+  }
+
+  .attraction-info .info-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .attraction-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .attraction-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .features-list li {
+    padding: 10px 14px;
+    padding-left: 30px;
+    font-size: 0.9rem;
+  }
+
+  .features-list li:before {
+    left: 10px;
+    font-size: 1rem;
+  }
+
+  /* 3D模型移动端优化 */
+  .model-viewer-fullscreen {
+    height: 60vh;
+    min-height: 300px;
+  }
+
+  .modal-content.fullscreen-model {
+    margin: 0;
+    max-height: 100vh;
+    border-radius: 0;
   }
 }
 
+/* 小屏手机适配 */
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
   }
-  
-  .marker-label {
-    font-size: 0.8rem;
-    padding: 3px 6px;
+
+  .site-header {
+    padding: 15px 0;
   }
-  
+
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .back-btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  /* 初始视图 */
+  .initial-view {
+    min-height: 70vh;
+    padding: 15px 0;
+  }
+
+  .initial-overview-image {
+    max-width: 95vw;
+  }
+
+  .next-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    margin-top: 25px;
+  }
+
+  .next-btn .arrow {
+    font-size: 1.3rem;
+  }
+
+  /* 文字内容优化 */
+  .intro-text h2 {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+  }
+
+  .intro-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  /* 地图标记优化 */
   .marker-dot {
     width: 16px;
     height: 16px;
+    border-width: 2px;
+  }
+
+  .marker-label {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    top: -30px;
+  }
+
+  /* 特色卡片 */
+  .highlights-section {
+    padding: 30px 15px;
+    margin: 0 5px;
+  }
+
+  .highlight-card {
+    padding: 20px 15px;
+  }
+
+  .highlight-icon {
+    font-size: 2.2rem;
+  }
+
+  .highlight-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+  }
+
+  /* 弹窗进一步优化 */
+  .modal-overlay {
+    padding: 5px;
+  }
+
+  .modal-content {
+    margin: 10px 0;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.2rem;
+    width: 100%;
+  }
+
+  .header-controls {
+    align-self: flex-end;
+    gap: 8px;
+  }
+
+  .model-toggle-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .close-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.3rem;
+  }
+
+  /* 轮播图小屏优化 */
+  .carousel-container {
+    height: 200px;
+  }
+
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .prev-btn, .next-btn {
+    top: 45%;
+  }
+
+  .prev-btn {
+    left: 8px;
+  }
+
+  .next-btn {
+    right: 8px;
+  }
+
+  .carousel-indicators {
+    bottom: 10px;
+    padding: 6px 12px;
+    gap: 8px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-width: 1px;
+  }
+
+  .indicator.active::after {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* 景点信息小屏优化 */
+  .attraction-info {
+    padding: 15px 10px;
+  }
+
+  .attraction-info .info-section {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-left-width: 3px;
+  }
+
+  .attraction-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .attraction-info h4::before {
+    font-size: 1rem;
+  }
+
+  .attraction-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .features-list li {
+    padding: 8px 12px;
+    padding-left: 28px;
+    font-size: 0.85rem;
+  }
+
+  .features-list li:before {
+    left: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* 3D模型小屏优化 */
+  .model-viewer-fullscreen {
+    height: 50vh;
+    min-height: 250px;
+  }
+
+  .modal-content.fullscreen-model {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+
+  .modal-content.fullscreen-model .modal-header {
+    padding: 10px 15px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .modal-content.fullscreen-model .modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  /* 底部样式 */
+  .site-footer {
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+
+  .site-footer p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* 超小屏设备适配 */
+@media (max-width: 360px) {
+  .site-title {
+    font-size: 1.6rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .next-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .intro-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .carousel-container {
+    height: 180px;
+  }
+
+  .model-viewer-fullscreen {
+    height: 45vh;
+    min-height: 200px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .highlights-section {
+    padding: 25px 10px;
+  }
+
+  .highlight-card {
+    padding: 15px 12px;
+  }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .initial-view {
+    min-height: 60vh;
   }
 
   .carousel-container {
@@ -1249,22 +1734,12 @@ onMounted(() => {
   }
 
   .model-viewer-fullscreen {
-    height: 50vh;
-    min-height: 250px;
+    height: 70vh;
+    min-height: 200px;
   }
 
-  .modal-content.fullscreen-model {
-    max-width: 100vw;
-    max-height: 100vh;
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-  }
-
-  .carousel-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
+  .modal-content {
+    max-height: 95vh;
   }
 }
 </style> 
